@@ -1,4 +1,4 @@
-import { createStore, createWebHistory } from 'vuex';
+import { createRouter, createWebHistory } from 'vue-router';
 
 import CoachDetails from './pages/coaches/CoachDetail.vue';
 import CoachList from './pages/coaches/CoachList.vue';
@@ -8,7 +8,7 @@ import ContactCoach from './pages/requests/ContactCoach.vue';
 import RequestRecieved from './pages/requests/RequestRecieved.vue';
 import NotFound from './pages/NotFound.vue';
 
-const router = createStore({
+const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', redirect: '/coaches' },
