@@ -1,18 +1,26 @@
 import { createStore, createWebHistory } from 'vuex';
 
+import CoachDetails from './pages/coaches/CoachDetail.vue';
+import CoachList from './pages/coaches/CoachList.vue';
+import CoachRegistration from './pages/coaches/CoachRegistration.vue';
+
+import ContactCoach from './pages/requests/ContactCoach.vue';
+import RequestRecieved from './pages/requests/RequestRecieved.vue';
+import NotFound from './pages/NotFound.vue';
+
 const router = createStore({
   history: createWebHistory(),
   routes: [
     { path: '/', redirect: '/coaches' },
-    { path: '/coaches', component: null },
+    { path: '/coaches', component: CoachList },
     {
       path: '/coaches/:id',
-      component: null,
-      children: [{ path: '/contact', component: null }],
+      component: CoachDetails,
+      children: [{ path: '/contact', component: ContactCoach }],
     },
-    { path: '/register', component: null },
-    { path: '/requests', component: null },
-    { path: '/:notFound(.*)', component: null },
+    { path: '/register', component: CoachRegistration },
+    { path: '/requests', component: RequestRecieved },
+    { path: '/:notFound(.*)', component: NotFound },
   ],
 });
 
