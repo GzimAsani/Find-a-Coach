@@ -27,7 +27,7 @@ export default {
         {
           id: 'c3',
           firstName: 'Gzim',
-          lastName: 'Asamo',
+          lastName: 'Asani',
           areas: ['frontend', 'backend'],
           description:
             'I am Gzim and as a junior developer in a medium-sized tech company, I can help you get your first job or progress in your current role.',
