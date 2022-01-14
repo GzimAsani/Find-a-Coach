@@ -2,11 +2,11 @@
   <form @submit.prevent="submitForm">
     <div class="form-control">
       <label for="email">Your Email</label>
-      <input id="email" type="email" v-model="email" />
+      <input id="email" type="email" v-model.trim="email" />
     </div>
     <div class="form-control">
       <label for="message">Message</label>
-      <textarea rows="5" id="message" v-model="message"></textarea>
+      <textarea rows="5" id="message" v-model.trim="message"></textarea>
       <h4 class="errors" v-if="!formIsValid">
         Please enter a valid email and a message
       </h4>
@@ -33,8 +33,15 @@ export default {
         !this.email.includes('@') ||
         this.message === ''
       ) {
+        this.formIsValid = false;
         return;
       }
+      this.$store.dispatch('requests/contactCoach', {
+        email: this.email,
+        message: this.message,
+        coachId: this.$route.id,
+      });
+      this.$router.replace('/coaches');
     },
   },
 };
