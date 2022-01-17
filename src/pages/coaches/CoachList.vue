@@ -43,6 +43,7 @@ export default {
   components: { CoachItem, CoachesFilter },
   computed: {
     filteredCoaches() {
+      console.log(this.$store.getters['coaches/coaches']);
       const coaches = this.$store.getters['coaches/coaches'];
       return coaches.filter((coach) => {
         if (this.activeFilters.frontend && coach.areas.includes('frontend')) {

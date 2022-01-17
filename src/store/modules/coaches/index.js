@@ -34,13 +34,13 @@ export default {
           hourlyRate: 36,
         },
         {
-          id: 'c3',
+          id: 'c4',
           firstName: 'Blin',
           lastName: 'Nagavci',
           areas: ['frontend'],
           description:
             'I am Julie and as a senior developer in a big tech company, I can help you build good websites.',
-          hourlyRate: 2,
+          hourlyRate: 21,
         },
       ],
     };
