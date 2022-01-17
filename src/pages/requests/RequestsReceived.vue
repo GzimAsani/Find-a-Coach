@@ -2,27 +2,31 @@
   <section>
     <base-card>
       <header>
-        <h2>Request Recieved</h2>
+        <h2>Requests Received</h2>
       </header>
       <ul v-if="hasRequests">
         <request-item
-          v-for="requests in requestRecieved"
-          :key="requests.id"
-          :email="requests.email"
-          :message="requests.message"
+          v-for="req in receivedRequests"
+          :key="req.id"
+          :email="req.userEmail"
+          :message="req.message"
         ></request-item>
       </ul>
-      <h3 v-else>You haven't recieved any request yet!</h3>
+      <h3 v-else>You haven't received any requests yet!</h3>
     </base-card>
   </section>
 </template>
+
 <script>
-import RequestItem from '../../components/requests/requestItem.vue';
+import RequestItem from '../../components/requests/RequestItem.vue';
+
 export default {
-  components: { RequestItem },
+  components: {
+    RequestItem,
+  },
   computed: {
-    requestRecieved() {
-      return this.$store.getters['requests/getRequests'];
+    receivedRequests() {
+      return this.$store.getters['requests/requests'];
     },
     hasRequests() {
       return this.$store.getters['requests/hasRequests'];
@@ -30,6 +34,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 header {
   text-align: center;

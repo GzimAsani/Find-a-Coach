@@ -1,21 +1,20 @@
 <template>
   <form @submit.prevent="submitForm">
     <div class="form-control">
-      <label for="email">Your Email</label>
-      <input id="email" type="email" v-model.trim="email" />
+      <label for="email">Your E-Mail</label>
+      <input type="email" id="email" v-model.trim="email" />
     </div>
     <div class="form-control">
       <label for="message">Message</label>
       <textarea rows="5" id="message" v-model.trim="message"></textarea>
-      <h4 class="errors" v-if="!formIsValid">
-        Please enter a valid email and a message
-      </h4>
     </div>
+    <p class="errors" v-if="!formIsValid">Please enter a valid email and non-empty message.</p>
     <div class="actions">
       <base-button>Send Message</base-button>
     </div>
   </form>
 </template>
+
 <script>
 export default {
   data() {
@@ -39,13 +38,15 @@ export default {
       this.$store.dispatch('requests/contactCoach', {
         email: this.email,
         message: this.message,
-        coachId: this.$route.id,
+        coachId: this.$route.params.id
       });
       this.$router.replace('/coaches');
+
     },
   },
 };
 </script>
+
 <style scoped>
 form {
   margin: 1rem;

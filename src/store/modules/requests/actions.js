@@ -3,9 +3,9 @@ export default {
     const newRequest = {
       id: new Date().toISOString(),
       coachId: payload.coachId,
-      message: payload.message,
-      email: payload.email,
+      userEmail: payload.email,
+      message: payload.message
     };
-    context.commit('addRequest', newRequest); //addRequest is the mutation name
-  },
+    context.commit('addRequest', newRequest);
+  }
 };

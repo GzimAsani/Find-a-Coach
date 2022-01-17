@@ -1,6 +1,7 @@
-import mutations from './mutations';
-import actions from './actions';
-import getters from './getters';
+import mutations from './mutations.js';
+import actions from './actions.js';
+import getters from './getters.js';
+
 export default {
   namespaced: true,
   state() {
@@ -13,7 +14,7 @@ export default {
           areas: ['frontend', 'backend', 'career'],
           description:
             "I'm Maximilian and I've worked as a freelance web developer for years. Let me help you become a developer as well!",
-          hourlyRate: 30,
+          hourlyRate: 30
         },
         {
           id: 'c2',
@@ -22,30 +23,12 @@ export default {
           areas: ['frontend', 'career'],
           description:
             'I am Julie and as a senior developer in a big tech company, I can help you get your first job or progress in your current role.',
-          hourlyRate: 32,
-        },
-        {
-          id: 'c3',
-          firstName: 'Gzim',
-          lastName: 'Asani',
-          areas: ['frontend', 'backend'],
-          description:
-            'I am Gzim and as a junior developer in a medium-sized tech company, I can help you get your first job or progress in your current role.',
-          hourlyRate: 36,
-        },
-        {
-          id: 'c4',
-          firstName: 'Blin',
-          lastName: 'Nagavci',
-          areas: ['frontend'],
-          description:
-            'I am Julie and as a senior developer in a big tech company, I can help you build good websites.',
-          hourlyRate: 21,
-        },
-      ],
+          hourlyRate: 30
+        }
+      ]
     };
   },
   mutations,
   actions,
-  getters,
+  getters
 };

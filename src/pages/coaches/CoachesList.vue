@@ -1,8 +1,7 @@
 <template>
   <section>
-    <coaches-filter @change-filter="setFilters"></coaches-filter>
+    <coach-filter @change-filter="setFilters"></coach-filter>
   </section>
-
   <section>
     <base-card>
       <div class="controls">
@@ -16,21 +15,26 @@
           v-for="coach in filteredCoaches"
           :key="coach.id"
           :id="coach.id"
-          :firstName="coach.firstName"
-          :lastName="coach.lastName"
-          :areas="coach.areas"
+          :first-name="coach.firstName"
+          :last-name="coach.lastName"
           :rate="coach.hourlyRate"
+          :areas="coach.areas"
         ></coach-item>
       </ul>
-      <h3 v-else>There are no coaches found!</h3>
+      <h3 v-else>No coaches found.</h3>
     </base-card>
   </section>
 </template>
 
 <script>
 import CoachItem from '../../components/coaches/CoachItem.vue';
-import CoachesFilter from '../../components/coaches/CoachFilter.vue';
+import CoachFilter from '../../components/coaches/CoachFilter.vue';
+
 export default {
+  components: {
+    CoachItem,
+    CoachFilter,
+  },
   data() {
     return {
       activeFilters: {
@@ -40,10 +44,11 @@ export default {
       },
     };
   },
-  components: { CoachItem, CoachesFilter },
   computed: {
+    isCoach() {
+      return this.$store.getters['coaches/isCoach'];
+    },
     filteredCoaches() {
-      console.log(this.$store.getters['coaches/coaches']);
       const coaches = this.$store.getters['coaches/coaches'];
       return coaches.filter((coach) => {
         if (this.activeFilters.frontend && coach.areas.includes('frontend')) {
@@ -60,9 +65,6 @@ export default {
     },
     hasCoaches() {
       return this.$store.getters['coaches/hasCoaches'];
-    },
-    isCoach() {
-      return this.$store.getters['coaches/isCoach'];
     },
   },
   methods: {

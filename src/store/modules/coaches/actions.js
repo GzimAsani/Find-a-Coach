@@ -6,9 +6,9 @@ export default {
       lastName: data.last,
       description: data.desc,
       hourlyRate: data.rate,
-      areas: data.areas,
+      areas: data.areas
     };
 
     context.commit('registerCoach', coachData);
-  },
+  }
 };
