@@ -36,13 +36,15 @@ export default {
     const responseData = await response.json();
 
     if (!response.ok) {
-      //Throw an error
+      const error = new Error(responseData.message || 'Failed to load data');
+      throw error;
     }
 
     const coaches = [];
 
     for (const key in responseData) {
       const coach = {
+        id: key,
         firstName: responseData[key].firstName,
         lastName: responseData[key].lastName,
         description: responseData[key].description,
